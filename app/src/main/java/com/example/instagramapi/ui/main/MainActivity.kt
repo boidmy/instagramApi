@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.instagramapi.R
 import com.example.instagramapi.databinding.ActivityMainBinding
 import com.example.instagramapi.ui.base.BaseActivity
+import com.giphy.sdk.ui.Giphy
+import com.giphy.sdk.ui.views.GiphyDialogFragment
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -18,6 +20,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Giphy.configure(this, resources.getString(R.string.giphyApi))
+        GiphyDialogFragment.newInstance().show(supportFragmentManager, "giphy_dialog")
 
         binding.viewModel = viewModel
     }
