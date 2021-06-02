@@ -1,5 +1,6 @@
-package com.example.instagramapi.data
+package com.example.instagramapi.data.apiConnect
 
+import com.example.instagramapi.data.ApiService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
