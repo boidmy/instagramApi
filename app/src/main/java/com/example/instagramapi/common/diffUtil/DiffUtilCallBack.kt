@@ -1,4 +1,4 @@
-package com.example.instagramapi.common
+package com.example.instagramapi.common.diffUtil
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.instagramapi.common.diffUtil.DiffUtilDataInterface
@@ -13,7 +13,11 @@ object DiffUtilCallBack: DiffUtil.ItemCallback<DiffUtilDataInterface>() {
         oldItem: DiffUtilDataInterface,
         newItem: DiffUtilDataInterface
     ): Boolean {
-        return oldItem.contentValue() == newItem.contentValue()
+        return if (oldItem.contentValue() == newItem.contentValue()) {
+            oldItem.itemIndex() == newItem.itemIndex()
+        } else {
+            false
+        }
     }
 }
 
