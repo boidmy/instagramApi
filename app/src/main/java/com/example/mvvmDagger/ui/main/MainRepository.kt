@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmDagger.common.diffUtil.DiffUtilDataInterface
 import com.example.mvvmDagger.data.apiConnect.ApiConnection
-import com.example.mvvmDagger.data.model.InstagramModel
-import com.example.mvvmDagger.data.model.InstagramUser
-import com.example.mvvmDagger.data.model.InstagramUserNumber
+import com.example.mvvmDagger.data.model.User
+import com.example.mvvmDagger.data.model.UserNumber
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -36,19 +35,19 @@ class MainRepository @Inject constructor() {
     fun clickItem(position: Int, itemList: List<Any>) {
         val list: List<Any> = itemList.map {
             when (it) {
-                is InstagramUser -> {
+                is User -> {
                     if (position == it.index) {
                         it.copy(itemClick = !it.itemClick)
                     } else {
                         it.copy()
                     }
                 }
-                is InstagramUserNumber -> it.copy()
+                is UserNumber -> it.copy()
                 else -> it
             }
         }
 
-        with(list[position] as InstagramUser) {
+        with(list[position] as User) {
             if (itemClick) {
                 (list as MutableList).add(position+1, phone)
             } else {

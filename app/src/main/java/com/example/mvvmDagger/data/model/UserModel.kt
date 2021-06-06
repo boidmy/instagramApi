@@ -3,8 +3,8 @@ package com.example.mvvmDagger.data.model
 import com.example.mvvmDagger.common.Interface.ItemClickInterface
 import com.example.mvvmDagger.common.diffUtil.DiffUtilDataInterface
 
-data class InstagramModel(
-    val contacts: List<InstagramUser> = mutableListOf()
+data class UserModel(
+    val contacts: List<User> = mutableListOf()
 ) {
     fun setItemIndex() {
         for ((index, item) in contacts.withIndex()) {
@@ -13,13 +13,13 @@ data class InstagramModel(
     }
 }
 
-data class InstagramUser(
+data class User(
     val id: String = "",
     val name: String = "",
     val email: String = "",
     val address: String = "",
     val gender: String = "",
-    val phone: InstagramUserNumber = InstagramUserNumber(),
+    val phone: UserNumber = UserNumber(),
     val type: String = "user",
     var itemClick: Boolean = false,
     var index: Int = 0
@@ -49,7 +49,7 @@ data class InstagramUser(
     }
 }
 
-data class InstagramUserNumber(
+data class UserNumber(
     val mobile: String = "",
     val home: String = "",
     val office: String = "",

@@ -10,7 +10,7 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.example.instagramapi"
+        applicationId "com.example.mvvmDagger"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

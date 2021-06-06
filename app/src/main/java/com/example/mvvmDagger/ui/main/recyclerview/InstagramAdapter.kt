@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmDagger.R
 import com.example.mvvmDagger.common.diffUtil.DiffUtilCallBack
 import com.example.mvvmDagger.common.diffUtil.DiffUtilDataInterface
-import com.example.mvvmDagger.data.model.InstagramUser
-import com.example.mvvmDagger.data.model.InstagramUserNumber
+import com.example.mvvmDagger.data.model.User
+import com.example.mvvmDagger.data.model.UserNumber
 import com.example.mvvmDagger.databinding.InstagramItemBinding
 import com.example.mvvmDagger.databinding.InstagramItemPhoneBinding
 import com.example.mvvmDagger.ui.base.ViewHolderBase
@@ -21,29 +21,29 @@ class InstagramAdapter(private val viewModel: MainViewModel) :
 
     private val diffUtil = AsyncListDiffer(this, DiffUtilCallBack)
 
-    var getUser: (Int) -> InstagramUser = {
-        diffUtil.currentList.getOrNull(it) as InstagramUser
+    var getUser: (Int) -> User = {
+        diffUtil.currentList.getOrNull(it) as User
     }
 
-    var getUserNumber: (Int) -> InstagramUserNumber = {
-        diffUtil.currentList.getOrNull(it) as InstagramUserNumber
+    var getUserNumber: (Int) -> UserNumber = {
+        diffUtil.currentList.getOrNull(it) as UserNumber
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            USER -> InstagramViewHolder(parent)
-            else -> InstagramNumberViewHolder(parent)
+            USER -> UserViewHolder(parent)
+            else -> UserNumberViewHolder(parent)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is InstagramViewHolder -> {
+            is UserViewHolder -> {
                 holder.bindView(getUser(position)) {
                     viewModel.clickItem(position, diffUtil.currentList)
                 }
             }
-            is InstagramNumberViewHolder -> holder.bindView(getUserNumber(position))
+            is UserNumberViewHolder -> holder.bindView(getUserNumber(position))
         }
     }
 
@@ -63,10 +63,10 @@ class InstagramAdapter(private val viewModel: MainViewModel) :
     }
 }
 
-class InstagramViewHolder(parent: ViewGroup) :
+class UserViewHolder(parent: ViewGroup) :
     ViewHolderBase<InstagramItemBinding>(parent, R.layout.instagram_item) {
 
-    fun bindView(item: InstagramUser, block: () -> Unit) {
+    fun bindView(item: User, block: () -> Unit) {
         binding.item = item
         binding.container.setOnClickListener {
             block()
@@ -74,10 +74,10 @@ class InstagramViewHolder(parent: ViewGroup) :
     }
 }
 
-class InstagramNumberViewHolder(parent: ViewGroup) :
+class UserNumberViewHolder(parent: ViewGroup) :
     ViewHolderBase<InstagramItemPhoneBinding>(parent, R.layout.instagram_item_phone) {
 
-    fun bindView(item: InstagramUserNumber) {
+    fun bindView(item: UserNumber) {
         binding.item = item
     }
 }

@@ -1,11 +1,7 @@
 package com.example.mvvmDagger.ui.main
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvmDagger.common.Interface.ItemClickInterface
-import com.example.mvvmDagger.data.model.InstagramModel
-import com.example.mvvmDagger.data.model.InstagramUser
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(private val repository: MainRepository) : ViewModel() {
