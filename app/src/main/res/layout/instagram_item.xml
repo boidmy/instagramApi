@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.instagramapi.data.model.InstagramUser" />
+            type="com.example.mvvmDagger.data.model.InstagramUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
