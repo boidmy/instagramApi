@@ -5,42 +5,51 @@
 
     <data>
 
+        <variable
+            name="item"
+            type="com.example.instagramapi.data.model.InstagramUserNumber" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_begin="15dp"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="35dp" />
 
         <TextView
             android:id="@+id/mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{item.mobileNumber}"
             app:layout_constraintStart_toStartOf="@+id/guidStart"
-            tools:text="010-1234-1234"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="010-1234-1234" />
 
         <TextView
             android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{item.homeNumber}"
             app:layout_constraintStart_toStartOf="@+id/guidStart"
             app:layout_constraintTop_toBottomOf="@+id/mobile"
-            tools:text="02-1234-1234"/>
+            tools:text="02-1234-1234" />
 
         <TextView
             android:id="@+id/office"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{item.officeNumber}"
             app:layout_constraintStart_toStartOf="@+id/guidStart"
             app:layout_constraintTop_toBottomOf="@+id/home"
-            tools:text="02-1234-1234"/>
+            tools:text="02-1234-1234" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

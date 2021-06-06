@@ -6,6 +6,7 @@ import com.example.instagramapi.common.diffUtil.DiffUtilDataInterface
 import com.example.instagramapi.data.apiConnect.ApiConnection
 import com.example.instagramapi.data.model.InstagramModel
 import com.example.instagramapi.data.model.InstagramUser
+import com.example.instagramapi.data.model.InstagramUserNumber
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -26,24 +27,35 @@ class MainRepository @Inject constructor() {
                 it.setItemIndex()
                 data.value = it.contacts
             }, {
-                //통신에러
+                //error
             })
         )
         return data
     }
 
     fun clickItem(position: Int, itemList: List<Any>) {
-        val list: MutableList<Any> = mutableListOf()
-        list.addAll(itemList)
-        with(list[position] as InstagramUser) {
-            itemClick = if (itemClick) {
-                list.removeAt(position+1)
-                false
-            } else {
-                list.add(position+1, phone)
-                true
+        val list: List<Any> = itemList.map {
+            when (it) {
+                is InstagramUser -> {
+                    if (position == it.index) {
+                        it.copy(itemClick = !it.itemClick)
+                    } else {
+                        it.copy()
+                    }
+                }
+                is InstagramUserNumber -> it.copy()
+                else -> it
             }
         }
+
+        with(list[position] as InstagramUser) {
+            if (itemClick) {
+                (list as MutableList).add(position+1, phone)
+            } else {
+                (list as MutableList).removeAt(position+1)
+            }
+        }
+
         for ((index, item) in list.withIndex()) {
             (item as DiffUtilDataInterface).setItemIndex(index)
         }

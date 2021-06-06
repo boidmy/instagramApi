@@ -5,35 +5,46 @@
 
     <data>
 
+        <variable
+            name="item"
+            type="com.example.instagramapi.data.model.InstagramUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="15dp">
 
         <View
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="@drawable/corner_rounded"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{item.id}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="abcd1234"/>
+            tools:text="abcd1234" />
 
         <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:text="@{item.email}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/id"
             app:layout_constraintTop_toTopOf="@+id/id"
-            tools:text="qwer@gmail.com"/>
+            tools:text="qwer@gmail.com" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

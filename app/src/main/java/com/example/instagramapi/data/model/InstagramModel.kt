@@ -80,4 +80,15 @@ data class InstagramUserNumber(
         return false
     }
 
+    fun getMobileNumber(): String {
+        return "mobile : $mobile"
+    }
+
+    fun getHomeNumber(): String {
+        return "home : $home"
+    }
+
+    fun getOfficeNumber(): String {
+        return "office : $office"
+    }
 }

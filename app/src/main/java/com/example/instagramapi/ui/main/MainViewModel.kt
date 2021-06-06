@@ -15,12 +15,12 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     val data: LiveData<List<Any>>
         get() = _data
 
+    fun clickItem(position: Int, itemList: List<Any>) {
+        repository.clickItem(position, itemList)
+    }
+
     override fun onCleared() {
         repository.onCleared()
         super.onCleared()
-    }
-
-    fun clickItem(position: Int, itemList: List<Any>) {
-        repository.clickItem(position, itemList)
     }
 }
