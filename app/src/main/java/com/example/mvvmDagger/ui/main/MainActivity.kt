@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmDagger.R
 import com.example.mvvmDagger.databinding.ActivityMainBinding
 import com.example.mvvmDagger.ui.base.BaseActivity
-import com.example.mvvmDagger.ui.main.recyclerview.InstagramAdapter
+import com.example.mvvmDagger.ui.main.recyclerview.UserAdapter
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -21,11 +21,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.viewModel = viewModel
-        binding.instagramRv.adapter = InstagramAdapter(viewModel)
+        binding.apply {
+            viewModel = this@MainActivity.viewModel
+            instagramRv.adapter = UserAdapter(this@MainActivity.viewModel)
+        }
 
         viewModel.data.observe(this, Observer {
-            (binding.instagramRv.adapter as InstagramAdapter).setData(it)
+            (binding.instagramRv.adapter as UserAdapter).setData(it)
         })
     }
 }

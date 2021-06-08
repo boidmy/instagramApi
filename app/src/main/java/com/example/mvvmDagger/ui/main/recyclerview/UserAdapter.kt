@@ -8,12 +8,12 @@ import com.example.mvvmDagger.common.diffUtil.DiffUtilCallBack
 import com.example.mvvmDagger.common.diffUtil.DiffUtilDataInterface
 import com.example.mvvmDagger.data.model.User
 import com.example.mvvmDagger.data.model.UserNumber
-import com.example.mvvmDagger.databinding.InstagramItemBinding
-import com.example.mvvmDagger.databinding.InstagramItemPhoneBinding
+import com.example.mvvmDagger.databinding.UserItemBinding
+import com.example.mvvmDagger.databinding.UserPhoneBinding
 import com.example.mvvmDagger.ui.base.ViewHolderBase
 import com.example.mvvmDagger.ui.main.MainViewModel
 
-class InstagramAdapter(private val viewModel: MainViewModel) :
+class UserAdapter(private val viewModel: MainViewModel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val USER = 0
@@ -64,7 +64,7 @@ class InstagramAdapter(private val viewModel: MainViewModel) :
 }
 
 class UserViewHolder(parent: ViewGroup) :
-    ViewHolderBase<InstagramItemBinding>(parent, R.layout.instagram_item) {
+    ViewHolderBase<UserItemBinding>(parent, R.layout.user_item) {
 
     fun bindView(item: User, block: () -> Unit) {
         binding.item = item
@@ -75,7 +75,7 @@ class UserViewHolder(parent: ViewGroup) :
 }
 
 class UserNumberViewHolder(parent: ViewGroup) :
-    ViewHolderBase<InstagramItemPhoneBinding>(parent, R.layout.instagram_item_phone) {
+    ViewHolderBase<UserPhoneBinding>(parent, R.layout.user_phone) {
 
     fun bindView(item: UserNumber) {
         binding.item = item
